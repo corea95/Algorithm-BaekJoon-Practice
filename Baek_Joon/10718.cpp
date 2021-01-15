@@ -6,7 +6,7 @@ int main(void)
 {
     for(int i = 0; i<2; i++)
     {
-    std::cout<< "ê°•í•œì¹œêµ¬ ëŒ€í•œìœ¡êµ°" <<std::endl;
+    std::cout<< "°­ÇÑÄ£±¸ ´ëÇÑÀ°±º" <<std::endl;
     }
 
     return 0;
