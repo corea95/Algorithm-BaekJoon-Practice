@@ -1,22 +1,33 @@
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <algorithm>
 
 using namespace std;
 
-int number = 7;
-int c[7];
+int Queue_visited[7];
 vector<int> a[8];
 
-void dfs(int x)
+void BFS(int start)
 {
-    if(c[x]) return; //현재 그 노드를 이미 방문했다면.
-    c[x] = true; //방문처리
-    cout << x << ' '; //방문처리한 노드요소 출력
-    for(int i = 0; i < a[x].size(); i++)
+    queue<int> q;
+    q.push(start);
+    Queue_visited[start] = true;
+
+    while(!q.empty())
     {
-        //인접노드를 방문하면서 해당 인접노드를 대상으로 dfs를 수행
-        int y = a[x][i];
-        dfs(y);
+        int x = q.front();
+        cout << x << " ";
+        q.pop();
+        for(int i = 0; i < a[x].size(); i++)
+        {
+            int y = a[x][i];
+            if(!Queue_visited[y])
+            {
+                q.push(y);
+                Queue_visited[y] = true;
+            }
+        }
     }
 }
 
@@ -49,7 +60,8 @@ int main(void)
     a[6].push_back(7);
     a[7].push_back(6);
 
-    dfs(1);
-    
+    BFS(1);
     return 0;
 }
+
+
